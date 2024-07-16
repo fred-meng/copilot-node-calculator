@@ -12,12 +12,11 @@
 			"extensions": [
 				"GitHub.copilot",
 				"GitHub.copilot-labs"
-			]
+			],
+			"settings": {
+				"terminal.integrated.shell.linux": "/bin/bash"
+			}
 		}
-	},
-	// Set *default* container specific shell values on container create.
-	"settings": {
-		"terminal.integrated.shell.linux": "/bin/bash"
 	},
 
 	// Add the proxy settings to the container.
