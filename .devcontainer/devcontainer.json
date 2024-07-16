@@ -15,9 +15,13 @@
 			]
 		}
 	},
+	// Set *default* container specific shell values on container create.
+	"settings": {
+		"terminal.integrated.shell.linux": "/bin/bash"
+	},
+
+	// Add the proxy settings to the container.
 	"containerEnv": {
-    	"HTTP_PROXY": "http://host.docker.internal:7890",
-    	"HTTPS_PROXY": "http://host.docker.internal:7890",
     	"http_proxy": "http://host.docker.internal:7890",
     	"https_proxy": "http://host.docker.internal:7890"
   	},
@@ -29,7 +33,10 @@
 	"forwardPorts": [3000],
 
 	// Use 'postCreateCommand' to run commands after the container is created.
-	"postCreateCommand": "npm install"
+	"postCreateCommand": "npm install",
+
+	// Use 'postStartCommand' to run git proxy configuration after the container is started.
+	"postStartCommand": "git config --global http.proxy http://host.docker.internal:7890"
 
 	// Configure tool-specific properties.
 	// "customizations": {},
