@@ -16,7 +16,9 @@ exports.calculate = function(req, res) {
     'subtract': function(a, b) { return a - b },
     'multiply': function(a, b) { return a * b },
     'divide':   function(a, b) { return a / b },
-    'power':    function(a, b) { return Math.pow(a, b) },
+    'power':    function(a, b) { return Math.pow(a, b) }, 
+    //add new operator for square root
+    'sqrt':     function(a, b) { return Math.sqrt(a) },
   };
 
   if (!req.query.operation) {

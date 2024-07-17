@@ -310,6 +310,50 @@ describe('Arithmetic', function () {
         });
     });
 
+    // add tests for square root
+    describe('Square Root', function () {
+        it('finds the square root of a positive integer', function (done) {
+            request.get('/arithmetic?operation=sqrt&operand1=25&operand2=0')
+                .expect(200)
+                .end(function (err, res) {
+                    expect(res.body).to.eql({ result: 5 });
+                    done();
+                });
+        });
+        it('finds the square root of zero', function (done) {
+            request.get('/arithmetic?operation=sqrt&operand1=0&operand2=0')
+                .expect(200)
+                .end(function (err, res) {
+                    expect(res.body).to.eql({ result: 0 });
+                    done();
+                });
+        });
+        it('finds the square root of a negative integer', function (done) {
+            request.get('/arithmetic?operation=sqrt&operand1=-25&operand2=0')
+                .expect(200)
+                .end(function (err, res) {
+                    expect(res.body).to.eql({ result: null });
+                    done();
+                });
+        });
+        it('finds the square root of a floating point number', function (done) {
+            request.get('/arithmetic?operation=sqrt&operand1=2.5&operand2=0')
+                .expect(200)
+                .end(function (err, res) {
+                    expect(res.body).to.eql({ result: 1.5811388300841898 });
+                    done();
+                });
+        });
+        it('finds the square root of a negative floating point number', function (done) {
+            request.get('/arithmetic?operation=sqrt&operand1=-2.5&operand2=0')
+                .expect(200)
+                .end(function (err, res) {
+                    expect(res.body).to.eql({ result: null });
+                    done();
+                });
+        });
+    });
+
     describe('Multiplication', function () {
         it('multiplies two positive integers', function (done) {
             request.get('/arithmetic?operation=multiply&operand1=21&operand2=2')
